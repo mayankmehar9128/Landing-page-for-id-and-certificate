@@ -1,0 +1,366 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(./3393544.jpg);
+  background-repeat: no-repeat;
+  /* background-size: cover; */
+}
+
+.css-slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100%;
+    height: 210px;
+    margin: 1em auto 0.5em auto;
+  /* margin: 5em auto 0.5em auto; */
+}
+.css-slideshow figure {
+  margin: 0;
+  max-width: 495px;
+  /* height: 370px; */
+  /* background: #000; */
+  position: absolute;
+}
+.css-slideshow img {
+  box-shadow: 0 0 2px #666;
+}
+.css-slideshow figcaption {
+  position: absolute;
+  top: 0;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.3);
+  font-size: 0.8em;
+  padding: 8px 12px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.css-slideshow:hover figure figcaption {
+  transition: opacity 0.5s;
+  opacity: 1;
+}
+.css-slideshow-attr {
+  max-width: 495px;
+  text-align: right;
+  font-size: 0.7em;
+  font-style: italic;
+  margin: 0 auto;
+}
+.css-slideshow-attr a {
+  color: #666;
+}
+.css-slideshow figure {
+  opacity: 0;
+}
+figure:nth-child(1) {
+  animation: xfade 48s 42s infinite;
+}
+figure:nth-child(2) {
+  animation: xfade 48s 36s infinite;
+}
+figure:nth-child(3) {
+  animation: xfade 48s 30s infinite;
+}
+figure:nth-child(4) {
+  animation: xfade 48s 24s infinite;
+}
+figure:nth-child(5) {
+  animation: xfade 48s 18s infinite;
+}
+figure:nth-child(6) {
+  animation: xfade 48s 12s infinite;
+}
+figure:nth-child(7) {
+  animation: xfade 48s 6s infinite;
+}
+figure:nth-child(8) {
+  animation: xfade 48s 0s infinite;
+}
+
+@keyframes xfade {
+  0% {
+    opacity: 1;
+  }
+  10.5% {
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 0;
+  }
+  98% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.nav-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-slider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  background-color: aqua;
+  height: 70px;
+  margin: 20px;
+  /* display: flex; */
+  display: none;
+  /* align-items: center; */
+  border-radius: 20px;
+  /* justify-content: space-evenly; */
+}
+
+.manu {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-left: 10px;
+}
+
+li {
+  list-style-type: none;
+}
+
+.hero-section-container {
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  backdrop-filter: blur(1px) saturate(200%);
+  -webkit-backdrop-filter: blur(1px) saturate(200%);
+  background-color: rgba(140, 140, 170, 0.14);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  margin: 20px;
+}
+
+.details {
+  padding: 5px;
+  margin-left: 3px;
+  color: white;
+}
+
+.business-idea {
+  position: relative;
+  bottom: 124px;
+}
+
+.chat {
+  position: relative;
+  /* left: 448px; */
+}
+
+.certificate {
+  border-radius: 30px;
+}
+
+.idcard-worker {
+  position: relative;
+  left: 96px;
+}
+
+.id-card-emp {
+  position: relative;
+  left: 170px;
+}
+
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #f4d03f;
+  background-image: linear-gradient(220deg, #f4d03f 0%, #16a085 71%);
+  margin: 126px 100px 0px 100px;
+  border-radius: 50px;
+  height: 150px;
+}
+
+.card2 {
+  width: 100%;
+  backdrop-filter: blur(3px) saturate(183%);
+  -webkit-backdrop-filter: blur(3px) saturate(183%);
+  background-color: rgba(1, 8, 249, 0.24);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  text-align: center;
+  color: white;
+  /* margin: 5px; */
+  z-index: 10;
+  position: relative;
+  bottom: 59px;
+}
+
+.card1 {
+  width: 100%;
+  backdrop-filter: blur(3px) saturate(183%);
+  -webkit-backdrop-filter: blur(3px) saturate(183%);
+  background-color: rgba(1, 8, 249, 0.24);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  text-align: center;
+  color: white;
+  /* margin: 5px; */
+  z-index: 10;
+  position: relative;
+  bottom: 59px;
+}
+
+/*
+ * Start
+*/
+.glassBox {
+  width: 100%;
+  height: 246px;
+  max-width: 208px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.05);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-right-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 10;
+  bottom: 65px;
+}
+.glassBox,
+.glassBox * {
+  box-sizing: border-box;
+  transition: 400ms;
+}
+.glassBox__imgBox img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.glassBox__title {
+  text-align: center;
+  margin-top: 15px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Lato";
+}
+.glassBox__content {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  font-family: "Lato";
+  letter-spacing: 0.1em;
+  opacity: 0;
+}
+.glassBox:hover .glassBox__imgBox {
+  transform: translateY(-50px);
+}
+.glassBox:hover .glassBox__imgBox img {
+  transform: translate(-20px, -40px) rotate(-15deg) scale(1.4);
+}
+
+@media screen and (max-width: 480px) {
+
+  .link-certificate {
+    width: 80px;
+  }
+  .link-id-card {
+    width: 80px;
+  }
+  .idcard-worker {
+    width: 100px;
+    left: 58px;
+  }
+
+  .id-card-emp {
+    position: relative;
+    left: 62px;
+    width: 93px;
+  }
+  .certificate {
+    width: 92px;
+    position: relative;
+    right: 44px;
+    top: 2px;
+  }
+
+  .main-container {
+    margin: 119px 4px 0px 4px;
+    height: 82px;
+  }
+  .glassBox {
+    height: 183px;
+    max-width: 141px;
+    bottom: 56px;
+  }
+
+  .business-idea {
+    bottom: -5px;
+    left: 140px;
+  }
+  .slide-img {
+    width: 200px;
+  }
+  .details{
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 320px){
+    .certificate{
+        right: 60px;
+        top: -2px;
+    }
+    .id-card-emp{
+        left: 33px;
+        width: 108px;
+    }
+    .idcard-worker{
+        left: 46px;
+    }
+    .business-idea{
+        left: 90px;
+    }
+    .details{
+        font-size: 12px;
+    }
+
+}
+/* @media screen and (max-width: 600px){
+    .certificate{
+        right: 60px;
+        top: -2px;
+    }
+    .id-card-emp{
+        left: 33px;
+        width: 108px;
+    }
+    .idcard-worker{
+        left: 46px;
+    }
+    .business-idea{
+        left: 90px;
+    }
+    .details{
+        font-size: 12px;
+    }
+
+} */
