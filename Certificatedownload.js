@@ -109,7 +109,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
     const { PDFDocument } = PDFLib;
 
     // Fetching the certificate into website
-    const exBytes = await fetch("./CMC_NEW_Certificate_Latest.pdf").then((res) => {
+    const exBytes = await fetch("./cmcnewlatestversioncert.pdf").then((res) => {
         return res.arrayBuffer();
     });
 
@@ -138,7 +138,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
 
     // Embed uploaded image into the PDF document
     const uploadedImage = await pdfDoc.embedPng(uploadedImageBytes);
-    const uploadedImageDims = uploadedImage.scale(0.16);
+    const uploadedImageDims = uploadedImage.scale(0.18);
 
 
     const { degrees } = PDFLib;
@@ -147,9 +147,9 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
     // Draw text and uploaded image on the certificate
     firstPg.drawText(name, {
         x: 356,
-        y: 288,
+        y: 295,
         color: rgb(1, 0, 0), // Red color
-        size: 52,
+        size: 40,
         weight: 100,
         font: myFontName,
         rotate: degrees(90), // Angle should be in radians, not degrees
@@ -195,7 +195,7 @@ const generatePDF = async (name, Fathers_Name, Issue_Date, Awarded_To, uploadedI
         size: 16,
         weight: 100,
         font: myFont,
-        color:rgb(0.188, 0.851, 0.192),
+        color:rgb(0.5, 0.100, 0.5), // purple color
         rotate: degrees(90),
         rotateOrigin: [315, 265]
     });
