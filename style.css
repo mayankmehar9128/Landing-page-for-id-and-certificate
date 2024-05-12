@@ -6,6 +6,16 @@ body {
   /* background-size: cover; */
 }
 
+.cmcbanner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 14px;
+  /* background-image: url(cmcbanner_for_landing_page.jpg);
+  height: 400px; */
+}
+
 .css-slideshow {
     display: flex;
     align-items: center;
@@ -153,7 +163,8 @@ li {
 
 .business-idea {
   position: relative;
-  bottom: 124px;
+  bottom: -23px;
+  left: 192px;
 }
 
 .chat {
@@ -322,6 +333,10 @@ li {
   .details{
     font-size: 15px;
   }
+  .bannertop{
+    width: 224px;
+    height: 103px;
+  }
 }
 
 @media screen and (max-width: 320px){
@@ -341,6 +356,10 @@ li {
     }
     .details{
         font-size: 12px;
+    }
+    .bannertop{
+      width: 224px;
+      height: 103px;
     }
 
 }
