@@ -50,6 +50,7 @@ h3 {
 
 h1 {
     margin-top: -50px;
+    font-size: 36px;
 }
 
 a{
@@ -61,8 +62,9 @@ a{
     outline: none;
     border: none;
     border-bottom: 1px solid #ccc;
-    width: 200px;
+    width: 273px;
     background: rgba(42, 114, 124, 0.11);
+    padding: 3px;
 }
 
 #Fathers_Name {
@@ -70,8 +72,9 @@ a{
     outline: none;
     border: none;
     border-bottom: 1px solid #ccc;
-    width: 200px;
+    width: 273px;
     background: rgba(42, 114, 124, 0.11);
+    padding: 3px;
 }
 
 #Issue_Date {
@@ -79,8 +82,23 @@ a{
     outline: none;
     border: none;
     border-bottom: 1px solid #ccc;
-    width: 200px;
+    width: 273px;
     background: rgba(42, 114, 124, 0.11);
+    padding: 3px;
+}
+#Awarded_To {
+    font-size: large;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 273px;
+    background-color: #212121;
+    padding: 3px;
+    color: #fff;
+}
+
+#image {
+    font-size: 16px;
 }
 
 main {
@@ -165,7 +183,7 @@ main {
     }
     
     h1 {
-        font-size: 30px!important;
+        font-size: 23px !important;
     }
     
     a{
