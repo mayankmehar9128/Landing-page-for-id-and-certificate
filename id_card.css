@@ -17,7 +17,7 @@ body {
     justify-content: center;
     width: 70vw;
     /* height: 480px; */
-    padding: 24px;
+    padding: 26px;
     /* margin-top: 60px; */
     margin-top: 8px;
     /* margin-left: 28%; */
@@ -30,13 +30,44 @@ body {
     -webkit-backdrop-filter: blur(4.1px);
     border: 1px solid rgba(42, 114, 124, 0.08);
 }
-.back-button{
+/* .back-button{
     padding: 0px 10px;
-}
+} */
 
 .fa-arrow-left-long{
     font-size: 20px;
 }
+
+.back-button {
+    background: linear-gradient(to bottom right, #EF4765, #FF9A5A);
+    border: 0;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 2.5;
+    outline: transparent;
+    /* padding: 0 1rem; */
+    padding: 0px 11px;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s ease-in-out;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+  }
+  
+  .back-button:not([disabled]):focus {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  }
+  
+  .back-button:not([disabled]):hover {
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  }
 
 img {
     border-radius: 5px;
@@ -106,12 +137,14 @@ main {
 }
 
 #submit {
-    padding: 5px 15px;
-    height: 30px;
+    padding: 6px 44px;
+    /* height: 45px; */
     border: 2px solid white;
     border-radius: 10px;
     background-color: greenyellow;
     cursor: pointer;
+    font-size: 19px;
+    font-weight: 700;
 }
 
 
@@ -175,7 +208,7 @@ main {
         /* margin-left: 16%; */
         /* width: 70vw !important; */
         width: 88vw !important;
-        padding: 12px;
+        padding: 30px 15px
         /* height: 65vh; */
     }
 
@@ -195,7 +228,7 @@ main {
     .container {
         /* margin-left: 16%; */
         width: 76vw;
-        padding: 12px;
+        padding: 30px 15px
         /* height: 67vh; */
 
     }
