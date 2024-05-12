@@ -17,7 +17,7 @@ body {
     justify-content: center;
     width: 70vw;
     /* height: 480px; */
-    padding: 24px;
+    padding: 26px;
     /* margin-top: 60px; */
     margin-top: 8px;
     /* margin-left: 28%; */
@@ -110,12 +110,14 @@ main {
 }
 
 #submit {
-    padding: 5px 15px;
-    height: 30px;
+    padding: 6px 44px;
+    /* height: 45px; */
     border: 2px solid white;
     border-radius: 10px;
     background-color: greenyellow;
     cursor: pointer;
+    font-size: 19px;
+    font-weight: 700;
 }
 
 
@@ -204,7 +206,7 @@ main {
     .container {
         /* margin-left: 16%; */
         width: 88vw !important;
-        padding: 12px;
+        padding: 30px 15px
         /* height: 65vh; */
     }
 
@@ -221,7 +223,7 @@ main {
     .container {
         /* margin-left: 16%; */
         width: 76vw;
-        padding: 12px;
+        padding: 30px 15px
         /* height: 67vh; */
 
     }
