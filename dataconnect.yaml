@@ -1,0 +1,12 @@
+specVersion: "v1beta"
+serviceId: "CMC_ID_card_generator"
+location: "us-central1"
+schema:
+  source: "./schema"
+  datasource:
+    postgresql:
+      database: "fdcdb"
+      cloudSql:
+        instanceId: "CMC_ID_card_generator-fdc"
+      # schemaValidation: "COMPATIBLE"
+connectorDirs: ["./connector"]

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./certificatestyle.css" />
+  </head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+  </style>
+  <body>
+    <!-- Section to display data -->
+    <h2>Student Records</h2>
+    <table border="1" id="studentTable" class="stdtable">
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Student Name</th>
+          <th>Father's Name</th>
+          <th>Issue Date</th>
+          <th>Awarded To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Data will be dynamically populated here -->
+      </tbody>
+    </table>
+  </body>
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/@pdf-lib/fontkit"></script>
+  <script src="./certificateFileSaver.js"></script>
+  <script src="./Certificatedownload.js"></script>
+
+  <script type="module">
+    // Import the functions you need from the SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+    import {
+      getDatabase,
+      ref,
+      set,
+      get,
+      child
+    } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+
+    // web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCQb00rW5JSQGGNCzpsg0yA8GnngGL1slU",
+      authDomain: "certificate-gen-1b316.firebaseapp.com",
+      databaseURL: "https://certificate-gen-1b316-default-rtdb.firebaseio.com",
+      projectId: "certificate-gen-1b316",
+      storageBucket: "certificate-gen-1b316.firebasestorage.app",
+      messagingSenderId: "47759297662",
+      appId: "1:47759297662:web:4fba434031b4532ad1dc2f",
+      measurementId: "G-TG15SWCTNX"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+
+    // Get a reference to the database
+    const db = getDatabase();
+
+    const nameInp = document.getElementById("name");
+    const fathernameInp = document.getElementById("father_name");
+    const issuedateInp = document.getElementById("Issue_Date");
+    const awardedtoInp = document.getElementById("awarded_to");
+    const imageInp = document.getElementById("image");
+    const submitInp = document.getElementById("submit");
+
+    // Convert the uploaded image to Base64
+    function convertImageToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file); // Convert file to Base64
+      });
+    }
+
+    async function AddData() {
+      const imageFile = imageInp.files[0];
+
+      if (!imageFile) {
+        alert("Please upload an image.");
+        return;
+      }
+
+      try {
+        const imageBase64 = await convertImageToBase64(imageFile);
+
+        // Store data in Firebase
+        set(ref(db, "StudentSet/" + nameInp.value), {
+          studentDetails: {
+            studentName: nameInp.value,
+            fatherName: fathernameInp.value,
+            issueDate: issuedateInp.value,
+            awardedto: awardedtoInp.value,
+            image: imageBase64 // Store Base64 image
+          }
+        })
+          .then(() => {
+            alert("Data added Successfully!");
+            FetchData(); // Refresh table after adding data
+          })
+          .catch((error) => {
+            alert("Unsuccessful");
+            console.error(error);
+          });
+      } catch (error) {
+        console.error("Error converting image to Base64:", error);
+        alert("Failed to convert image.");
+      }
+    }
+
+    function FetchData() {
+      alert("inside FetchData");
+      const dbRef = ref(db);
+      get(child(dbRef, "StudentSet"))
+        .then((snapshot) => {
+          if (snapshot.exists()) {
+            const tableBody = document.querySelector("#studentTable tbody");
+            tableBody.innerHTML = ""; // Clear existing rows
+
+            const data = snapshot.val();
+            for (let key in data) {
+              const student = data[key].studentDetails;
+
+              const row = `
+          <tr>
+            <td>
+              <img src="${student.image}" alt="Student Image" width="60" />
+            </td>
+            <td>${student.studentName}</td>
+            <td>${student.fatherName}</td>
+            <td>${student.issueDate}</td>
+            <td>${student.awardedto}</td>
+          </tr>
+        `;
+              tableBody.innerHTML += row;
+            }
+          } else {
+            console.log("No data available");
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }
+
+    submitInp.addEventListener("click", AddData);
+
+    // Fetch data when the page loads
+    window.onload = FetchData;
+  </script>
+</html>

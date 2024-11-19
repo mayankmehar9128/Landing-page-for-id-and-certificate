@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Certificate of Completion</title>
+    <link rel="stylesheet" href="certificatestyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="index.html" target="_self">
+        <button type="button" class="back-button">
+          <i class="fa-solid fa-arrow-left-long"></i>
+        </button>
+      </a>
+
+      <div class="container">
+        <img
+          src="./WhatsApp Image 2024-05-12 at 11.08.49_7003d4fc.jpg"
+          alt="Micro"
+          width="95%"
+        />
+        <h3>Get your certificate from</h3>
+        <a href="https://micro75.com/" target="_blank">
+          <h1>MICRO INFODATASOFT TECHNOLOGY</h1>
+        </a>
+
+        <main>
+          <!-- Form for adding student details -->
+          <label for="name">Type Student Name</label>
+          <input
+            required
+            type="text"
+            id="name"
+            name="name"
+            autocomplete="name"
+          />
+
+          <label for="father_name">Type Father's Name</label>
+          <input
+            required
+            type="text"
+            id="father_name"
+            name="father_name"
+            autocomplete="father-name"
+          />
+
+          <label for="issue_date">Type Issue Date</label>
+          <input
+            required
+            type="text"
+            id="Issue_Date"
+            name="issue_date"
+            autocomplete="Issue_Date"
+          />
+
+          <label for="class">Type Class</label>
+          <input
+            required
+            type="text"
+            id="class"
+            name="class"
+            autocomplete="awarded-to"
+          />
+
+          <label for="rank">Type Rank</label>
+          <input
+            required
+            type="text"
+            id="rank"
+            name="rank_get"
+            autocomplete="awarded-to"
+          />
+
+          <a
+            href="https://imresizer.com/resize-image-to-600x600"
+            target="_self"
+          >
+            <h4>Click to resize image (520x650 px)</h4>
+          </a>
+          <label for="image">Upload Student Image (520x650 pixels)</label>
+          <input
+            type="file"
+            id="image"
+            accept="image/jpeg, image/png"
+            required
+          />
+
+          <button id="submit">Get Certificate</button>
+        </main>
+
+        <!-- Section to display data -->
+        <h2>Student Records</h2>
+        <table border="1" id="studentTable" class="stdtable">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Student Name</th>
+              <th>Father's Name</th>
+              <th>Issue Date</th>
+              <th>Class</th>
+              <th>Rank</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will be dynamically populated here -->
+          </tbody>
+        </table>
+      </div>
+    </header>
+
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+    <script src="https://unpkg.com/@pdf-lib/fontkit"></script>
+    <script src="./certificateFileSaver.js"></script>
+    <script src="./cmcexamcert_download.js"></script>
+
+    <script type="module">
+      // Import the functions you need from the SDKs
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        get,
+        child
+      } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+    
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCQb00rW5JSQGGNCzpsg0yA8GnngGL1slU",
+        authDomain: "certificate-gen-1b316.firebaseapp.com",
+        databaseURL: "https://certificate-gen-1b316-default-rtdb.firebaseio.com",
+        projectId: "certificate-gen-1b316",
+        storageBucket: "certificate-gen-1b316.firebasestorage.app",
+        messagingSenderId: "47759297662",
+        appId: "1:47759297662:web:4fba434031b4532ad1dc2f",
+        measurementId: "G-TG15SWCTNX"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    
+      // Get a reference to the database
+      const db = getDatabase();
+    
+      const nameInp = document.getElementById("name");
+      const fathernameInp = document.getElementById("father_name");
+      const issuedateInp = document.getElementById("Issue_Date");
+      const classInp = document.getElementById("class");
+      const rankoInp = document.getElementById("rank");
+      const imageInp = document.getElementById("image");
+      const submitInp = document.getElementById("submit");
+    
+      // Convert the uploaded image to Base64
+      function convertImageToBase64(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = (error) => reject(error);
+          reader.readAsDataURL(file); // Convert file to Base64
+        });
+      }
+    
+      async function AddData() {
+        const imageFile = imageInp.files[0];
+    
+        if (!imageFile) {
+          alert("Please upload an image.");
+          return;
+        }
+    
+        try {
+          const imageBase64 = await convertImageToBase64(imageFile);
+    
+          // Store data in Firebase
+          set(ref(db, "StudentExamSet/" + nameInp.value), {
+            studentExamDetails: {
+              studentName: nameInp.value,
+              fatherName: fathernameInp.value,
+              issueDate: issuedateInp.value,
+              class: classInp.value,
+              rank: rankoInp.value,
+              image: imageBase64 // Store Base64 image
+            }
+          })
+            .then(() => {
+              alert("Data added Successfully!");
+              FetchData(); // Refresh table after adding data
+            })
+            .catch((error) => {
+              alert("Unsuccessful");
+              console.error(error);
+            });
+        } catch (error) {
+          console.error("Error converting image to Base64:", error);
+          alert("Failed to convert image.");
+        }
+      }
+    
+      function FetchData() {
+        const dbRef = ref(db);
+        get(child(dbRef, "StudentExamSet"))
+          .then((snapshot) => {
+            if (snapshot.exists()) {
+              const tableBody = document.querySelector("#studentTable tbody");
+              tableBody.innerHTML = ""; // Clear existing rows
+    
+              const data = snapshot.val();
+              for (let key in data) {
+                const student = data[key].studentExamDetails;
+    
+                const row = `
+                  <tr>
+                    <td>
+                      <img src="${student.image}" alt="Student Image" width="60" class="tableimg" />
+                    </td>
+                    <td>${student.studentName}</td>
+                    <td>${student.fatherName}</td>
+                    <td>${student.issueDate}</td>
+                    <td>${student.class}</td>
+                    <td>${student.rank}</td>
+                  </tr>
+                `;
+                tableBody.innerHTML += row;
+              }
+            } else {
+              console.log("No data available");
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
+      }
+    
+      submitInp.addEventListener("click", AddData);
+    
+      // Fetch data when the page loads
+      window.onload = FetchData;
+    </script>
+    
+  </body>
+</html>
