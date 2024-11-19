@@ -16,6 +16,7 @@ body {
     align-items: center;
     justify-content: center;
     width: 70vw;
+    gap: 50px;
     /* height: 480px; */
     padding: 26px;
     /* margin-top: 60px; */
@@ -57,6 +58,14 @@ a{
     color: #6492f6
 }
 
+.formcontainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
 #name{
     font-size: large;
     outline: none;
@@ -67,13 +76,13 @@ a{
     padding: 3px;
 }
 
-#Fathers_Name {
+#father_name {
     font-size: large;
     outline: none;
     border: none;
     border-bottom: 1px solid #ccc;
     width: 273px;
-    background: rgba(42, 114, 124, 0.11);
+    background: #212121;
     padding: 3px;
 }
 
@@ -83,10 +92,33 @@ a{
     border: none;
     border-bottom: 1px solid #ccc;
     width: 273px;
-    background: rgba(42, 114, 124, 0.11);
+    background: #212121;
     padding: 3px;
+    color: white;
 }
-#Awarded_To {
+#awarded_to {
+    font-size: large;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 273px;
+    background-color: #212121;
+    padding: 3px;
+    color: #fff;
+}
+
+#class {
+    font-size: large;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 273px;
+    background-color: #212121;
+    padding: 3px;
+    color: #fff;
+}
+
+#rank {
     font-size: large;
     outline: none;
     border: none;
@@ -118,6 +150,10 @@ main {
     cursor: pointer;
     font-size: 19px;
     font-weight: 700;
+}
+
+.stdtable {
+    font-size: 14px;
 }
 
 
@@ -210,6 +246,10 @@ main {
         /* height: 65vh; */
     }
 
+    .tableimg {
+        width: 72px !important;
+    }
+
 
 }
 
@@ -229,11 +269,16 @@ main {
     }
 
     h3 {
-        font-size: 23px;
+        font-size: 24px;
     }
     
     h1 {
         font-size: 36px;
+    }
+
+    
+    .tableimg {
+        width: 72px !important;
     }
 
 } 
