@@ -148,6 +148,10 @@ main {
 }
 
 
+.stdtable {
+    font-size: 14px;
+}
+
 
 @media (prefers-color-scheme: dark) {
     body {
@@ -234,7 +238,7 @@ main {
     }
 
     h3 {
-        font-size: 23px;
+        font-size: 24px;
     }
     
     h1 {
