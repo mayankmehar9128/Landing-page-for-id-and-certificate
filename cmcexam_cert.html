@@ -70,12 +70,21 @@
             autocomplete="awarded-to"
           />
 
-          <label for="rank">Type Rank</label>
+          <label for="rank_get">Type Rank</label>
           <input
             required
             type="text"
             id="rank"
             name="rank_get"
+            autocomplete="awarded-to"
+          />
+
+          <label for="exam_name">Type Exam Name</label>
+          <input
+            required
+            type="text"
+            id="exam"
+            name="exam_name"
             autocomplete="awarded-to"
           />
 
@@ -107,6 +116,7 @@
               <th>Issue Date</th>
               <th>Class</th>
               <th>Rank</th>
+              <th>Exam Name</th>
             </tr>
           </thead>
           <tbody>
@@ -157,6 +167,7 @@
       const issuedateInp = document.getElementById("Issue_Date");
       const classInp = document.getElementById("class");
       const rankoInp = document.getElementById("rank");
+      const examInp = document.getElementById("exam");
       const imageInp = document.getElementById("image");
       const submitInp = document.getElementById("submit");
     
@@ -189,6 +200,7 @@
               issueDate: issuedateInp.value,
               class: classInp.value,
               rank: rankoInp.value,
+              exam: examInp.value,
               image: imageBase64 // Store Base64 image
             }
           })
@@ -228,6 +240,7 @@
                     <td>${student.issueDate}</td>
                     <td>${student.class}</td>
                     <td>${student.rank}</td>
+                    <td>${student.exam}</td>
                   </tr>
                 `;
                 tableBody.innerHTML += row;
