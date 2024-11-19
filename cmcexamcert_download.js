@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const inputFathersName = document.querySelector("#father_name");
       const inputClass = document.querySelector("#class");
       const inputRank = document.querySelector("#rank");
+      const inputExam = document.querySelector("#exam");
       const inputImage = document.getElementById("image");
   
-      if (!inputName || !inputIssueDate || !inputFathersName || !inputClass || !inputRank || !inputImage) {
+      if (!inputName || !inputIssueDate || !inputFathersName || !inputClass || !inputRank || !inputExam || !inputImage) {
         alert("Some input fields are missing. Please check your form.");
         return;
       }
@@ -19,12 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const fathername = inputFathersName.value.trim();
       const inclass = inputClass.value.trim();
       const rank = inputRank.value.trim();
+      const exam = inputExam.value.trim();
       const imageFile = inputImage.files[0];
   
-      if (name && issuedate && fathername && inclass && rank && imageFile) {
+      if (name && issuedate && fathername && inclass && rank && exam && imageFile) {
         try {
           const imageBytes = await imageFile.arrayBuffer();
-          generatePDF(name, fathername, issuedate, inclass, rank, imageBytes);
+          generatePDF(name, fathername, issuedate, inclass, rank, exam, imageBytes);
         } catch (error) {
           console.error("Error processing form data:", error);
           alert("An error occurred while generating the certificate.");
@@ -41,6 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
     Issue_Date,
     InClass,
     Rank,
+    Exam,
     uploadedImageBytes
   ) => {
     const { PDFDocument, rgb } = PDFLib; // Import rgb here
@@ -81,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Embed uploaded image
     try {
       const uploadedImage = await pdfDoc.embedPng(uploadedImageBytes);
-      const uploadedImageDims = uploadedImage.scale(0.30);
+      const uploadedImageDims = uploadedImage.scale(0.27);
   
       firstPg.drawImage(uploadedImage, {
         x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 - 460,
@@ -102,10 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
   
     // Draw text
     firstPg.drawText(name, {
-      x: 500,
-      y: nameX - 250,
+      x: 490,
+      y: nameX - 242,
       color: PDFLib.rgb(1, 0, 0),
-      size: 90,
+      size: 80,
       font: myFontName,
     //   rotate: degrees(90), // Angle should be in radians, not degrees
     //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
@@ -115,7 +118,7 @@ document.addEventListener("DOMContentLoaded", () => {
       x: 500,
       y: 195,
       color: PDFLib.rgb(0.247, 0.188, 0.851),
-      size: 70,
+      size: 60,
       font: myFontFather,
     //   rotate: degrees(90), // Angle should be in radians, not degrees
     //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
@@ -129,13 +132,22 @@ document.addEventListener("DOMContentLoaded", () => {
     //   rotate: degrees(90), // Angle should be in radians, not degrees
     //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
     });
+
+    firstPg.drawText(Exam, {
+      x: 890,
+      y: 18,
+      size: 25,
+      font: myFont,
+    //   rotate: degrees(90), // Angle should be in radians, not degrees
+    //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
+    });
   
     // const awardedToWidth = myFont.widthOfTextAtSize(InClass, 16);
     // const awardedToX = (firstPg.getWidth() - awardedToWidth) / 2;
     firstPg.drawText(InClass, {
-      x: 85,
-      y: 37,
-      size: 55,
+      x: 25,
+      y: 30,
+      size: 51,
       font: myClass,
       color: PDFLib.rgb(1.0, 1.0, 1.0),
     //   rotate: degrees(90), // Angle should be in radians, not degrees
