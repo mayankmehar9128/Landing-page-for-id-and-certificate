@@ -165,9 +165,59 @@ main {
     font-weight: 700;
 }
 
-.stdtable {
-    font-size: 14px;
-}
+/* General styles for the table container */
+.table-container {
+    margin-top: 20px;
+    max-width: 100%;
+    overflow-x: auto; /* Horizontal scroll for small screens */
+    border: 1px solid #ccc; /* Optional border for better visuals */
+    border-radius: 8px;
+    padding: 10px;
+    /* background-color: #f9f9f9; Background color for distinction */
+    background-color: rgba(47, 66, 68, 0.4);
+  }
+  
+  /* Table styles */
+  .stdtable {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 16px;
+  }
+  
+  /* Table header styling */
+  .stdtable thead {
+    /* background-color: #ddd; */
+    background-color: #aeaeaec9;
+    color: black;
+  }
+  
+  .stdtable th,
+  .stdtable td {
+    padding: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Adjust table image */
+  .tableimg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+  }
+  
+  /* Responsive design for smaller devices */
+  @media (max-width: 768px) {
+    .table-container {
+      padding: 5px;
+      font-size: 14px;
+    }
+    .stdtable th,
+    .stdtable td {
+      font-size: 12px; /* Smaller text for compact display */
+    }
+  }
+  
 
 
 /* CSS */
