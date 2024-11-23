@@ -155,9 +155,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     firstPg.drawText(Rank, {
-        x: 285,
+        x: 283,
         y: 312,
-        size: 37,
+        size: 29,
         font: myFont,
         color: PDFLib.rgb(1.0, 1.0, 1.0),
         // rotate: degrees(90), // Angle should be in radians, not degrees
