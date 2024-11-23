@@ -76,7 +76,7 @@ a{
     width: 273px;
     background: rgba(42, 114, 124, 0.11);
     padding: 3px;
-    color: white;
+    color: #fff;
 }
 
 #father_name {
@@ -87,7 +87,7 @@ a{
     width: 273px;
     background: #212121;
     padding: 3px;
-    color: white;
+    color: #fff;
 }
 
 #Issue_Date {
@@ -98,7 +98,7 @@ a{
     width: 273px;
     background: #212121;
     padding: 3px;
-    color: white;
+    color: #fff;
 }
 #awarded_to {
     font-size: large;
