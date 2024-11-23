@@ -76,6 +76,7 @@ a{
     width: 273px;
     background: rgba(42, 114, 124, 0.11);
     padding: 3px;
+    color: white;
 }
 
 #father_name {
@@ -86,6 +87,7 @@ a{
     width: 273px;
     background: #212121;
     padding: 3px;
+    color: white;
 }
 
 #Issue_Date {
