@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  alert("inside pdf");
   const submitButton = document.getElementById("submit");
 
   submitButton.addEventListener("click", async () => {
-    alert("submit click");
     const inputName = document.querySelector("#name");
     const inputIssueDate = document.querySelector("#Issue_Date");
     const inputFathersName = document.querySelector("#father_name");
@@ -42,7 +40,6 @@ const generatePDF = async (
   Awarded_To,
   uploadedImageBytes
 ) => {
-  alert("inside generatePDF");
   const { PDFDocument, rgb } = PDFLib; // Import rgb here
 
   // Fetch certificate PDF
@@ -76,7 +73,6 @@ const generatePDF = async (
 
   // Embed uploaded image
   try {
-    alert("inside try");
     const uploadedImage = await pdfDoc.embedPng(uploadedImageBytes);
     const uploadedImageDims = uploadedImage.scale(0.16);
 
