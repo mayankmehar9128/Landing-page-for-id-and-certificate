@@ -81,125 +81,63 @@ const generatePDF = async (
     const uploadedImageDims = uploadedImage.scale(0.16);
 
 
-        firstPg.drawImage(uploadedImage, {
-      x: 400, // X-coordinate of where the image will be placed
-      y: 350, // Y-coordinate of where the image will be placed
+    firstPg.drawImage(uploadedImage, {
+      x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 164,
+      y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 - 290,
       width: uploadedImageDims.width,
       height: uploadedImageDims.height,
-    });
-
-    // Draw the student's name
-    firstPg.drawText(name, {
-      x: 200,
-      y: 500,
-      size: 24,
-      font: myFontName,
-      color: rgb(0, 0, 0),
-    });
-
-    // Draw the father's name
-    firstPg.drawText(Fathers_Name, {
-      x: 200,
-      y: 470,
-      size: 20,
-      font: myFontFather,
-      color: rgb(0.5, 0.5, 0.5),
-    });
-
-    // Draw the issue date
-    firstPg.drawText(Issue_Date, {
-      x: 200,
-      y: 440,
-      size: 18,
-      font: myFont,
-      color: rgb(0, 0, 1),
-    });
-
-    // Draw the award designation
-    firstPg.drawText(Awarded_To, {
-      x: 200,
-      y: 410,
-      size: 20,
-      font: myFont,
-      color: rgb(0.2, 0.6, 0.2),
+      rotate: degrees(90), // Angle should be in radians, not degrees
+      rotateOrigin: [315, 265] // Adjust rotation center to the text position
     });
   } catch (error) {
-    console.error("Error embedding image into PDF:", error);
-    alert("An error occurred while adding the image to the certificate.");
+    console.error("Error embedding PNG:", error);
+    alert("Failed to embed the uploaded image. Ensure it's a valid PNG file.");
     return;
   }
 
-  // Serialize the PDFDocument to bytes (a Uint8Array)
-  const pdfBytes = await pdfDoc.save();
+  // Draw text
+  firstPg.drawText(name, {
+    x: 355,
+    y: 288,
+    color: PDFLib.rgb(1, 0, 0),
+    size: 52,
+    font: myFontName,
+    rotate: degrees(90), // Angle should be in radians, not degrees
+    rotateOrigin: [315, 265] // Adjust rotation center to the text position
+  });
 
-  // Trigger a download of the PDF
-  const blob = new Blob([pdfBytes], { type: "application/pdf" });
-  const url = URL.createObjectURL(blob);
+  firstPg.drawText(Fathers_Name, {
+    x: 409,
+    y: 288,
+    color: PDFLib.rgb(0.247, 0.188, 0.851),
+    size: 35,
+    font: myFontFather,
+    rotate: degrees(90), // Angle should be in radians, not degrees
+    rotateOrigin: [315, 265] // Adjust rotation center to the text position
+  });
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = `${name}_Certificate.pdf`;
-  a.click();
+  firstPg.drawText(Issue_Date, {
+    x: 512,
+    y: 537,
+    size: 20,
+    font: myFont,
+    rotate: degrees(90), // Angle should be in radians, not degrees
+    rotateOrigin: [315, 265] // Adjust rotation center to the text position
+  });
 
-  URL.revokeObjectURL(url); // Clean up the URL object
+  const awardedToWidth = myFont.widthOfTextAtSize(Awarded_To, 16);
+  const awardedToX = (firstPg.getWidth() - awardedToWidth) / 2;
+  firstPg.drawText(Awarded_To, {
+    x: 259,
+    y: awardedToX + 115,
+    size: 16,
+    font: myFont,
+    color: PDFLib.rgb(0.188, 0.851, 0.192),
+    rotate: degrees(90), // Angle should be in radians, not degrees
+    rotateOrigin: [315, 265] // Adjust rotation center to the text position
+  });
 
-  //   firstPg.drawImage(uploadedImage, {
-  //     x: firstPg.getWidth() / 2 - uploadedImageDims.width / 2 + 164,
-  //     y: firstPg.getHeight() / 2 - uploadedImageDims.height / 2 - 290,
-  //     width: uploadedImageDims.width,
-  //     height: uploadedImageDims.height,
-  //     rotate: degrees(90), // Angle should be in radians, not degrees
-  //     rotateOrigin: [315, 265] // Adjust rotation center to the text position
-  //   });
-  // } catch (error) {
-  //   console.error("Error embedding PNG:", error);
-  //   alert("Failed to embed the uploaded image. Ensure it's a valid PNG file.");
-  //   return;
-  // }
-
-  // // Draw text
-  // firstPg.drawText(name, {
-  //   x: 355,
-  //   y: 288,
-  //   color: PDFLib.rgb(1, 0, 0),
-  //   size: 52,
-  //   font: myFontName,
-  //   rotate: degrees(90), // Angle should be in radians, not degrees
-  //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
-  // });
-
-  // firstPg.drawText(Fathers_Name, {
-  //   x: 409,
-  //   y: 288,
-  //   color: PDFLib.rgb(0.247, 0.188, 0.851),
-  //   size: 35,
-  //   font: myFontFather,
-  //   rotate: degrees(90), // Angle should be in radians, not degrees
-  //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
-  // });
-
-  // firstPg.drawText(Issue_Date, {
-  //   x: 512,
-  //   y: 537,
-  //   size: 20,
-  //   font: myFont,
-  //   rotate: degrees(90), // Angle should be in radians, not degrees
-  //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
-  // });
-
-  // const awardedToWidth = myFont.widthOfTextAtSize(Awarded_To, 16);
-  // const awardedToX = (firstPg.getWidth() - awardedToWidth) / 2;
-  // firstPg.drawText(Awarded_To, {
-  //   x: 259,
-  //   y: awardedToX + 115,
-  //   size: 16,
-  //   font: myFont,
-  //   color: PDFLib.rgb(0.188, 0.851, 0.192),
-  //   rotate: degrees(90), // Angle should be in radians, not degrees
-  //   rotateOrigin: [315, 265] // Adjust rotation center to the text position
-  // });
-
-  // // Save the modified PDF
-  // const uri = await pdfDoc.saveAsBase64({ dataUri: true });
-  // saveAs(uri, name + ".pdf", { autoBom: true });
+  // Save the modified PDF
+  const uri = await pdfDoc.saveAsBase64({ dataUri: true });
+  saveAs(uri, name + ".pdf", { autoBom: true });
 };
